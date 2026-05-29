@@ -132,7 +132,7 @@ public class TelaMenu {
         btnProdutos.setOnAction(event ->
                 StyleSupport.openChildStage("Produtos", new TelaProdutos().getScene()));
 
-        Button btnClientes = createSidebarButton("Cadastro de clientes");
+        Button btnClientes = createSidebarButton("Clientes");
         btnClientes.setOnAction(event ->
                 StyleSupport.openChildStage("Clientes", new TelaClientes().getScene()));
 

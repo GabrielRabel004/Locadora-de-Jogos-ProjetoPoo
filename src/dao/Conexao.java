@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import javax.swing.JOptionPane;
-
 public class Conexao {
 
     private static final String URL =
@@ -19,28 +17,10 @@ public class Conexao {
 
     public static Connection conexao;
 
-    public static Connection conectar() {
+    public static Connection conectar() throws SQLException {
 
-        try {
-
-            conexao = DriverManager.getConnection(URL);
-
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Conexao realizada com sucesso!"
-            );
-
-            return conexao;
-
-        } catch (SQLException ex) {
-
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Erro de conexao!\nERRO: " + ex.getMessage()
-            );
-
-            return null;
-        }
+        conexao = DriverManager.getConnection(URL);
+        return conexao;
     }
 
     public static void desconectar() {
@@ -51,19 +31,10 @@ public class Conexao {
 
                 conexao.close();
                 conexao = null;
-
-                JOptionPane.showMessageDialog(
-                        null,
-                        "Conexao fechada com sucesso!"
-                );
             }
 
         } catch (SQLException ex) {
-
-            JOptionPane.showMessageDialog(
-                    null,
-                    "Erro ao fechar conexao!\nERRO: " + ex.getMessage()
-            );
+            conexao = null;
         }
     }
 }
